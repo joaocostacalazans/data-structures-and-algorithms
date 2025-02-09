@@ -14,17 +14,19 @@ int partition(int a[], int lb, int ub)
 
     while (start < end)
     {
-        while (a[start] <= pivot)
+        while (a[start] <= pivot && start < ub)
         {
             start++;
         }
-        while (a[end] >= pivot)
+        while (a[end] > pivot && end > lb)
         {
             end--;
         }
         if (start < end)
         {
             swap(&a[start], &a[end]);
+            start++;
+            end--;
         }
     }
     swap(&a[lb], &a[end]);
@@ -44,8 +46,8 @@ void quickSort(int a[], int lb, int ub)
 
 int main()
 {
-    int a[7] = {10, 15, 1, 2, 9, 16, 11};
-    int n = 7, lb = 0, ub = n - 1;
+    int a[9] = {7, 6, 10, 5, 9, 2, 1, 15, 7};
+    int n = 9, lb = 0, ub = n - 1;
 
     quickSort(a, lb, ub);
 
